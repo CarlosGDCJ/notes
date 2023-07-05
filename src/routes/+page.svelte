@@ -4,7 +4,7 @@
     import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { avatar, bio, name } from '$lib/info.js';
 
-    // export let data;
+    export let data;
 </script>
 
 <svelte:head>
@@ -38,6 +38,6 @@
                 >View All <ArrowRightIcon class="w-4 h-4" /></a
             >
         </div>
-        <!-- <PostsList posts={data.posts} /> -->
+        <PostsList posts={data.posts} />
     </section>
 </div>
