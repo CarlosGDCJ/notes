@@ -2,7 +2,7 @@ import { visit } from 'unist-util-visit';
 import relativeImages from 'mdsvex-relative-images';
 import slugPlugin from 'rehype-slug';
 import remarkHeadings from '@vcarl/remark-headings';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib';
+import autolinkHeadings from 'rehype-autolink-headings';
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 
 const config = defineConfig({
@@ -15,7 +15,7 @@ const config = defineConfig({
     rehypePlugins: [
         slugPlugin,
         [
-            rehypeAutolinkHeadings,
+            autolinkHeadings,
             {
                 behavior: 'wrap'
             }
