@@ -5,6 +5,7 @@
     import SocialLinks from '$lib/components/SocialLinks.svelte';
     import { afterNavigate } from '$app/navigation';
     import PostDate from '$lib/components/PostDate.svelte';
+    import { base } from '$app/paths';
 
     /** @type {import('./$types').PageData} */
     export let data;
@@ -97,7 +98,7 @@
                     <SocialLinks />
                 </div>
                 <div class="flex justify-center order-2 md:order-1 md:col-span-2">
-                    <a href="/" class="inline-block rounded-full">
+                    <a href="{base}/" class="inline-block rounded-full">
                         <img
                             src={avatar}
                             alt={name}

@@ -5,6 +5,7 @@
     import { browser } from '$app/environment';
     import { name } from '$lib/info';
     import { page } from '$app/stores';
+    import { base } from '$app/paths';
 
     let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true;
 
@@ -21,7 +22,7 @@
         <header class="flex items-center justify-between w-full max-w-2xl py-4 mx-auto lg:pb-8">
             <a
                 class="text-lg font-bold sm:text-2xl !text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600 dark:to-teal-400"
-                href="/"
+                href="{base}/"
             >
                 {name}
             </a>
