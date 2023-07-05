@@ -3,6 +3,7 @@
     import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte';
     import ArrowRightIcon from '$lib/components/ArrowRightIcon.svelte';
     import PostsList from '$lib/components/PostsList.svelte';
+    import { base } from '$app/paths';
 
     export let data;
 
@@ -29,7 +30,7 @@
     <!-- pagination -->
     <div class="flex items-center justify-between pt-16 pb-8">
         {#if !isFirstPage}
-            <a href={`/posts/${data.page - 1}`} data-sveltekit-prefetch>
+            <a href={`${base}/posts/${data.page - 1}`} data-sveltekit-prefetch>
                 <ArrowLeftIcon class="w-4 h-4" />
                 Previous
             </a>
@@ -38,7 +39,7 @@
         {/if}
 
         {#if hasNextPage}
-            <a href={`/posts/${data.page + 1}`} data-sveltekit-prefetch
+            <a href={`${base}/posts/${data.page + 1}`} data-sveltekit-prefetch
                 >Next
                 <ArrowRightIcon class="w-4 h-4" />
             </a>
