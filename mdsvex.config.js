@@ -3,6 +3,8 @@ import relativeImages from 'mdsvex-relative-images';
 import slugPlugin from 'rehype-slug';
 import remarkHeadings from '@vcarl/remark-headings';
 import autolinkHeadings from 'rehype-autolink-headings';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex-svelte';
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 
 const config = defineConfig({
@@ -11,8 +13,9 @@ const config = defineConfig({
     smartypants: {
         dashes: 'oldschool'
     },
-    remarkPlugins: [videos, relativeImages, headings],
+    remarkPlugins: [remarkMath, videos, relativeImages, headings],
     rehypePlugins: [
+        rehypeKatex,
         slugPlugin,
         [
             autolinkHeadings,
