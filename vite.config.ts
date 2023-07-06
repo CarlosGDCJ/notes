@@ -6,7 +6,7 @@ export default defineConfig({
     // allows vite to access posts
     server: {
         fs: {
-            allow: ['./posts']
+            allow: ['./notes']
         }
     }
 });

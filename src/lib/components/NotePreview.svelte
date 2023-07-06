@@ -3,14 +3,14 @@
     import ArrowRightIcon from './ArrowRightIcon.svelte';
     import { base } from '$app/paths';
 
-    export let post;
+    export let note;
 </script>
 
-<Card href={`${base}/post/${post.slug}`} data-sveltekit-prefetch>
+<Card href={`${base}/note/${note.slug}`} data-sveltekit-prefetch>
     <slot slot="eyebrow" name="eyebrow" />
-    <slot slot="title">{post.title}</slot>
+    <slot slot="title">{note.title}</slot>
     <div slot="description" class="prose dark:prose-invert">
-        {@html post.preview.html}
+        {@html note.preview.html}
     </div>
     <div slot="actions">
         <div class="flex items-center text-teal-500">

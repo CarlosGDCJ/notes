@@ -2,17 +2,17 @@
     import { name } from '$lib/info.js';
     import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte';
     import ArrowRightIcon from '$lib/components/ArrowRightIcon.svelte';
-    import PostsList from '$lib/components/PostsList.svelte';
+    import NotesList from '$lib/components/NotesList.svelte';
     import { base } from '$app/paths';
 
     export let data;
 
     $: isFirstPage = data.page === 1;
-    $: hasNextPage = data.posts[data.posts.length - 1]?.previous;
+    $: hasNextPage = data.notes[data.notes.length - 1]?.previous;
 </script>
 
 <svelte:head>
-    <title>{name} | Posts</title>
+    <title>{name} | Notes</title>
 </svelte:head>
 
 <div class="flex flex-col flex-grow">
@@ -22,13 +22,13 @@
     </header>
 
     <div class="mt-16 sm:mt-20">
-        <PostsList posts={data.posts} />
+        <NotesList notes={data.notes} />
     </div>
 
     <!-- pagination -->
     <div class="flex items-center justify-between pt-16 pb-8">
         {#if !isFirstPage}
-            <a href={`${base}/posts/${data.page - 1}`} data-sveltekit-prefetch>
+            <a href={`${base}/notes/${data.page - 1}`} data-sveltekit-prefetch>
                 <ArrowLeftIcon class="w-4 h-4" />
                 Previous
             </a>
@@ -37,7 +37,7 @@
         {/if}
 
         {#if hasNextPage}
-            <a href={`${base}/posts/${data.page + 1}`} data-sveltekit-prefetch
+            <a href={`${base}/notes/${data.page + 1}`} data-sveltekit-prefetch
                 >Next
                 <ArrowRightIcon class="w-4 h-4" />
             </a>

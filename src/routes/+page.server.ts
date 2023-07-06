@@ -1,7 +1,7 @@
-import { posts } from '$lib/data/posts';
+import { notes } from '$lib/data/notes';
 
 export async function load() {
     return {
-        posts: posts.slice(0, 5)
+        notes: notes.slice(0, 5)
     };
 }

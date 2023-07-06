@@ -5,17 +5,17 @@ import readingTime from 'reading-time';
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
-    throw new Error(`posts can only be imported server-side`);
+    throw new Error(`notes can only be imported server-side`);
 }
 
-// Get all posts and add metadata
-export const posts = Object.entries(
-    import.meta.glob(['/posts/**/*.md', '/posts/**/*.svx'], { eager: true })
+// Get all notes and add metadata
+export const notes = Object.entries(
+    import.meta.glob(['/notes/**/*.md', '/notes/**/*.svx'], { eager: true })
 )
-    .map(([filepath, post]) => {
-        const html = parse(post.default.render().html);
-        const preview = post.metadata.preview
-            ? parse(post.metadata.preview)
+    .map(([filepath, note]) => {
+        const html = parse(note.default.render().html);
+        const preview = note.metadata.preview
+            ? parse(note.metadata.preview)
             : html.querySelector('p');
 
         const slug = filepath
@@ -24,7 +24,7 @@ export const posts = Object.entries(
             .pop();
 
         return {
-            ...post.metadata,
+            ...note.metadata,
 
             // generate the slug from the file path
             slug: filepath
@@ -32,17 +32,17 @@ export const posts = Object.entries(
                 .split('/')
                 .pop(),
 
-            // whether or not this file is `my-post.md` or `my-post/index.md`
-            // (needed to do correct dynamic import in posts/[slug].svelte)
+            // whether or not this file is `my-note.md` or `my-note/index.md`
+            // (needed to do correct dynamic import in notes/[slug].svelte)
             isIndexFile: filepath.endsWith('/index.md') || filepath.endsWith('/index.svx'),
 
             fileExtension: filepath.split('.').pop(),
 
             // format date as yyyy-MM-dd
-            date: post.metadata.date
+            date: note.metadata.date
                 ? format(
                       // offset by timezone so that the date is correct
-                      addTimezoneOffset(new Date(post.metadata.date)),
+                      addTimezoneOffset(new Date(note.metadata.date)),
                       'yyyy-MM-dd'
                   )
                 : undefined,
@@ -53,17 +53,17 @@ export const posts = Object.entries(
                 text: preview.structuredText ?? preview.toString()
             },
 
-            // get estimated reading time for the post
+            // get estimated reading time for the note
             readingTime: readingTime(html.structuredText).text
         };
     })
     // sort by date
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    // add references to the next/previous post
-    .map((post, index, allPosts) => ({
-        ...post,
-        next: allPosts[index - 1],
-        previous: allPosts[index + 1]
+    // add references to the next/previous note
+    .map((note, index, allNotes) => ({
+        ...note,
+        next: allNotes[index - 1],
+        previous: allNotes[index + 1]
     }));
 
 function addTimezoneOffset(date) {
