@@ -45,6 +45,7 @@ jobs:
       - name: Build site
         env:
           BASE_PATH: '/notes'
+          ASSETS_PATH: '/notes'
         run: |
           pnpm run build
           touch build/.nojekyll
