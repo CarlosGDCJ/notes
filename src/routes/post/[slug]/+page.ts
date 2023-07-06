@@ -7,8 +7,8 @@ export async function load({ data }) {
     const component = data.post.isIndexFile
         ? // vite requires relative paths and explicit file extensions for dynamic imports
           // see https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
-          await import(`../../../../posts/${data.post.slug}/index.md`)
-        : await import(`../../../../posts/${data.post.slug}.md`);
+          await import(`../../../../posts/${data.post.slug}/index.${data.post.fileExtension}`)
+        : await import(`../../../../posts/${data.post.slug}.${data.post.fileExtension}`);
 
     return {
         post: data.post,
