@@ -1,0 +1,89 @@
+---
+title: Testing mdsvex
+date: 06 June 2023
+tags:
+    - Meta
+---
+
+Is this thing even working?
+
+## Markdown
+We have working Markdown
+
+Some *emphasized text*, **bold text**, ~~strikethrough~~ text.
+
+- An unordered list
+	- item 1
+	- item 2
+
+1. An ordered list
+	1. item 1
+	2. item 2
+2. second
+1. third
+
+> A blockquote about something.
+
+Inline `code`
+
+Tables
+
+
+| col1  | col2  | col3  |
+|-------|-------|-------|
+| data1 | data2 | data3 |
+
+## Latex
+
+We having working inline math $f(x) = x^2$, and some block math:
+
+
+$$
+  \int \, x^2 \, \mathrm{d}x = \frac{1}{3}x^3 + C
+$$
+
+Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
+equation.
+
+$$
+  L = \frac 1  2 \rho v^2 S C_L
+$$
+
+$$
+\relax{x} = \int_{-0}^\infty
+			\hat\xi\,e^{2 \pi i \xi x}
+			\,d\xi
+$$
+
+$$
+\forall x \in X, \quad \exists y \leq \epsilon
+$$
+
+$$
+k_{n+1} = n^2 + k_n^2 - k_{n-1}
+$$
+
+$$
+\cos (2\theta) = \cos^2 \theta - \sin^2 \theta
+$$
+
+$$
+\lim\limits_{x \to \infty} \exp(-x) = 0
+$$
+
+$$
+\frac{n!}{k!(n-k)!} = \binom{n}{k}
+$$
+
+## Code
+
+```python {1-3, 5} showLineNumbers
+def is_this_show_any_good(show_name):
+    if "umaru" in show_name.lower():
+        return True
+    
+    return False
+```
+
+## Media
+![cola!](./umaru.gif)
