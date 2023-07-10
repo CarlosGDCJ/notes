@@ -1,0 +1,85 @@
+---
+title: ISLP - Chapter 2
+date: 10 June 2023
+tags:
+    - ISLP
+    - ISL
+    - Python
+---
+
+How hard could it be?
+
+## Notation
+
+* $X$: *inputs, predictors, independent variables, features*
+* $Y$: *output, response, dependent variable*
+* $n$: number of data points
+* $p$: number of features in $X$
+
+## Statistical Learning
+**Statistical Learning** is the set of approaches used to approximate the function
+$f$
+$$
+Y = f(X) + \epsilon
+$$
+
+$f$ represents the *systematic* information $X$ provides about $Y$, and that's what we
+try to estimate. $f$'s estimate is $\hat{f}$, and that can be used to predict $Y$.
+$$
+\hat{Y} = \hat{f}(X)
+$$
+
+$\epsilon$ is an *error term* independent of $X$ and has mean zero. We have no
+hope of getting this right(is independent of X), and as it averages to zero,
+we don't bother. This term represents things we didn't consider, i.e. unmeasured
+variables and unmeasured variation.
+
+### Prediction vs Inference
+When doing **prediction**, we treat $\hat{f}$ as a black box and are only concerned
+with the outcomes of said box. When doing **inference** we often want to know the
+form of $\hat{f}$ to uncover relationships between it and $X$.
+
+## Types of learning methods
+### Parametric
+Siplifies the problem of trying to estimate $f$ by assuming a functional form ("shape")
+for $f$ and trying to find out the correct coefficients using the training data $X$.
+
+### Non-parametric
+Makes no assumption on the functional form of $f$, which avoids the problem of choosing
+a form that's far from the truth, but need a lot of observations to create an accurate
+estimate.
+
+### Supervised
+The response variables are available
+
+### Unsupervised
+The response variables are not available. The task then becomes to find relationships
+between the variables or between observations
+
+### Semi-Supervised
+The response varialbe is avaliable only for some of the observations
+
+### Regression
+The response variable is **quantitative** (a number)
+
+### Classification
+The response variable is **qualitative** (a value from a set of values)
+
+
+## Evaluating learning methods
+When evaluating a method, we are only interested in how the method performs when
+dealing with unseen observations. Most statistical methods either directly or
+indirectly try to do well on the training data.
+
+There is no guarantee that a good score when training reflects on a good score when
+when testing. As model flexibility increases, performance on training data increases,
+but nothing can be said about test data.
+
+As it becomes more flexible, the statistical learning procedure can try to find
+patterns in the training data that are not inherent characteristics of the data, but
+are just random noise.
+
+
+
+
+
