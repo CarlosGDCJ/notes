@@ -11,10 +11,22 @@ How hard could it be?
 
 ## Notation
 
-* $X$: *inputs, predictors, independent variables, features*
+* $n$: number of *data points*, *observations*
+* $p$: number of *variables*, *features*
+* $X$: Matrix of *inputs, predictors, independent variables, features*
+    * $x_i$: row of the matrix, with data corresponding to one observation (lower case normal font)
+    * $\bold{x}_j$: column of the matrix with data corresponding to one variable (lower case bold)
+
+$$
+X=\begin{pmatrix}
+x_{11} & x_{12} & \dots & x_{1p}\\
+x_{21} & x_{22} & \dots & x_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n1} & x_{n2} & \dots & x_{np}\\
+\end{pmatrix}
+$$
 * $Y$: *output, response, dependent variable*
-* $n$: number of data points
-* $p$: number of features in $X$
+
 
 ## Statistical Learning
 **Statistical Learning** is the set of approaches used to approximate the function
@@ -71,6 +83,9 @@ When evaluating a method, we are only interested in how the method performs when
 dealing with unseen observations. Most statistical methods either directly or
 indirectly try to do well on the training data.
 
+$(x_0, y_0)$: Notation for a previously unseen test observation not used to train the
+learning method
+
 There is no guarantee that a good score when training reflects on a good score when
 when testing. As model flexibility increases, performance on training data increases,
 but nothing can be said about test data.
@@ -79,7 +94,22 @@ As it becomes more flexible, the statistical learning procedure can try to find
 patterns in the training data that are not inherent characteristics of the data, but
 are just random noise.
 
+## Bias-variance tradeoff
+The expected MSE error of a statistical learning model on unseen data can be
+decomposed as follows:
 
+$$
+E(y_0 - \hat{f}(x_0))^2 = Var(\hat{f}(x_0)) + [Bias(\hat{f}(x_0))]^2 + Var(\epsilon)
+$$
 
+* $Var(\epsilon)$ is associated with the *irreducible error*, and test MSE can never
+fall below this value.
+* $Var(\hat{f}(x_0))$ is related to the amount $\hat{f}$ would change if estimated
+using different training data. Highly flexible models tend to have $\hat{f}$s that
+vary wildly.
+* $[Bias(\hat{f}(x_0))]^2$ is the error term associated with using a simplified
+model to estimate $f$, when $f$ can be completely different. Like using linear
+regression when $f$ is non-linear.
 
-
+Normally, with increased flexibility/complexity, you can decrease bias, but by increasing
+flexibility you increase variance as well.
