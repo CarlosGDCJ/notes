@@ -111,5 +111,106 @@ vary wildly.
 model to estimate $f$, when $f$ can be completely different. Like using linear
 regression when $f$ is non-linear.
 
-Normally, with increased flexibility/complexity, you can decrease bias, but by increasing
-flexibility you increase variance as well.
+Normally, with increased flexibility/complexity, you can decrease bias, but by
+increasing flexibility you increase variance as well. Choosing the correct level
+of flexibility is critical to the success of any statistical learning method. **This**
+**concept transfer over to the classification setting as well.**
+
+## Conceptual Exercises
+$1$
+
+$a)$ Flexible methods would perform better, as we have a lot of data points to work
+with and these kinds of methods do well with an abundance of data
+
+$b)$ Inflexible methods would perform better. The limited amount of data makes it
+more likely that a flexible model will learn characteristics that are specific for
+the training data, and not about the true $f$.
+
+$c)$ Flexible methods would perform better, as they generally don't make as many
+assumptions about the form of $f$. Inflexible methods, on the other hand, often
+simplify $f$ by assuming a functional form, and in the case of a highly non-linear
+$f$, it would be quite detrimental
+
+$d)$ Inflexible methods would perform better. A high variance on the error term would
+make for highly different training sets. In this setting, flexible methods are prone
+to learn from the noise instead of the signal $f$.
+
+$2$
+
+$a)$ It's a **regression** problem and we are mostly interested in **inference**. 
+The goal is to understand how $X$ affects the target $Y$, and the variable of interest
+is quantitative.
+$$
+n = 500\\
+p = 4
+$$
+
+$b)$ It's a **classification** problem and we are mostly interested in **prediction**. 
+We are only concerned if the outcome is success or not, and the variable of interest
+is qualitative.
+$$
+n = 20\\
+p = 14
+$$
+
+$c)$  It's a **regression** problem and we are mostly interested in **prediction**.
+We are only concerned in finding out the value of the % change in USD/Euro, a
+quantitative variable
+$$
+n = numWeeksIn2012\\
+p = 4
+$$
+
+$3$
+
+$a)$ Soon<sup>TM</sup> I'll create a graph for this.
+
+$b)$
+* **Variance** starts small, but increases with the flexibility
+* **Bias** starts higher, but decreases with the flexibility
+* **Bayes error** is a straight line that serves as a lower limit for the test error
+* **Test error** is the addition of the three previous lines, which gives it the U shape:
+starts high because of high bias, ends high because of high variance
+* **Train error** goes down with flexibility, being able to go lower than Bayes error
+and even reach 0
+
+$5$
+
+More flexible approaches are better suited to handle complex relationships between
+the independent variables and the response. They are also more useful to the prediction
+task, as their results are hard to interpret (black box).
+
+If the relationship between predictors and the dependent variable is not expected to be
+complex, or the main interest in to understand the relationship between them,
+less flexible approaches are more suited
+
+$6$
+
+A parametric approach makes assumptions about the functional form of $f$, where $f$ is
+the function we are trying to estimate. It effectively simplifies the problem.
+
+A non-parametric approach makes no such assumptions, but in exchange needs, in general,
+more data to come up with a reasonable estimate of $f$.
+
+$7$
+
+| Obs. | X<sub>1</sub> | X<sub>2</sub> | X<sub>3</sub> | Y | Dist to Origin |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+1|0|3|0|Red|$\sqrt{9}$|
+2|2|0|0|Red|$\sqrt{4}$|
+3|0|1|3|Red|$\sqrt{10}$|
+4|0|1|2|Green|$\sqrt{5}$|
+5|-1|0|1|Green|$\sqrt{2}$|
+6|1|1|1|Red|$\sqrt{3}$|
+
+$a)$ See **Dist to Origin** column
+
+$b)$ Nearest Neighbor would be **Obs. 5**, the new element gets classified as Green
+
+$c)$ Nearest Neighbors would be **Obs. 5, Obs. 6, Obs. 2**, the new element gets
+classified as Red
+
+$d)$ Non-linearity usually calls for an increased flexibility. When dealing with the
+KNN algorithm, flexibility is increased by a lower $K$, so $K$ is expected to be small.
+Also, in this case, as we're dealing with few data points, any large $K$ would mostly
+yield the classification "Red"
